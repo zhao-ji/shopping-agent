@@ -1,13 +1,16 @@
 import React from 'react';
 
+import { Sidebar } from './sidebar';
+import { Header } from './header';
+import { Records } from './records';
+
 function App() {
   return (
     <div id="App">
-        <div id="sidebar">
-        </div>
-        <div id="header">
-        </div>
+        <Sidebar />
+        <Header />
         <div id="body">
+            <Records />
         </div>
         <div id="footer">
         </div>
