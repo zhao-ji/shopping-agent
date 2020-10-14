@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Sidebar } from './sidebar';
 import { Header } from './header';
-import { Records } from './records';
+import { Records } from './record';
 
 function App() {
   return (
