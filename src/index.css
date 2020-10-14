@@ -29,7 +29,7 @@ code {
 #sidebar {
     grid-area: sidebar;
     background-color: #f9f9f9;
-    background-image: url("https://mdbootstrap.com/img/Photos/Others/sidenav4.jpg");
+    background-image: url("/sidebar-background.jpg");
 }
 
 #header {

@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useFetchRecords } from './hooks';
+
 export function Records() {
+    const records = useFetchRecords();
     return (
         <div>
             <span>
@@ -10,6 +13,7 @@ export function Records() {
                 <input />
             </div>
             <div>
+                {records}
             </div>
         </div>
     );
