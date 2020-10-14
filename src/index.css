@@ -15,33 +15,32 @@ code {
 #App {
     display: grid;
     grid-template-columns: 15% auto;
-    grid-template-rows: 5% auto 15%;
+    grid-template-rows: 5% auto;
     grid-template-areas:
         "sidebar header"
         "sidebar body"
-        "footer footer";
-    column-gap: 1em;
-    row-gap: 1em;
-    padding: 1em;
+        ;
+    column-gap: 0.5em;
+    padding: 0.3em;
     width: 100vw;
     height: 100vh;
 }
 
 #sidebar {
     grid-area: sidebar;
-    background-color: grey;
+    background-color: #f9f9f9;
+    background-image: url("https://mdbootstrap.com/img/Photos/Others/sidenav4.jpg");
 }
 
 #header {
     grid-area: header;
-    background-color: grey;
+    background-color: #f9f9f9;
 }
 
 #body {
     grid-area: body;
 }
 
-#footer {
-    grid-area: footer;
-    background-color: grey;
+.cursor-pointer {
+    cursor: pointer;
 }

@@ -12,8 +12,6 @@ function App() {
         <div id="body">
             <Records />
         </div>
-        <div id="footer">
-        </div>
     </div>
   );
 }
