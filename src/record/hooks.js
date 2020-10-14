@@ -6,7 +6,7 @@ export function useFetchRecords(search, page) {
     console.log('-------------');
     const [records, setRecords] = useState([]);
     useEffect(() => {
-        axios.get("/record")
+        axios.get("/record/")
             .then(response => {
                 setRecords(response.data.results);
             })

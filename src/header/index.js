@@ -5,7 +5,7 @@ import {
 
 export function Header() {
     return (
-        <div id="header" className="d-flex flex-row">
+        <div id="header" className="d-flex flex-row z-depth-1">
             <span className="pl-3 pt-2 flex-grow-1 h4 align-bottom">
                 Welcome <strong>Admin</strong>!
             </span>

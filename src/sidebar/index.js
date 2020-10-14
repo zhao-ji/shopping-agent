@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { faShoppingCart, faGifts, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-// import { } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -72,12 +71,13 @@ export function Sidebar() {
             return <MenuItemWithSubMenu {...item} />;
         return <MenuItem {...item} />;
     });
+    // text-uppercase font-weight-bold h2 text-monospace text-center pt-4
     return (
         <div id="sidebar" className="z-depth-2">
-            <div className="text-uppercase font-weight-bold h2 text-monospace text-center pt-4">
+            <div className="text-hide mb-4">
+                <img id="sidebar-header" src="/dashboard-header.png" alt="Dashboard" />
                 Dashboard
             </div>
-            <hr/>
             <div>
                 {menuList}
             </div>

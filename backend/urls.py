@@ -14,10 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import url
 from django.urls import include, path
 from rest_framework import routers
 
 from app import views
+from backend.views import LoginView, LogoutView
 
 router = routers.DefaultRouter()
 router.register(r"record", views.RecordViewSet)
@@ -27,4 +29,6 @@ router.register(r"sku", views.SkuViewSet)
 urlpatterns = [
     path("", include(router.urls)),
     path('admin/', admin.site.urls),
+    url(r'^login/$', LoginView.as_view(), name='user-login'),
+    url(r'^logout/$', LogoutView.as_view(), name='user-logout'),
 ]
