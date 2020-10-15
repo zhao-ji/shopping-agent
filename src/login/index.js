@@ -1,8 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
     useHistory,
-    useLocation,
 } from "react-router-dom";
 import {
     MDBCard, MDBCardImage, MDBCardBody,

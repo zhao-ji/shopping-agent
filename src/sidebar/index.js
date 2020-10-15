@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { faShoppingCart, faGifts, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { MDBIcon } from 'mdbreact';
 
 
 const menu = [
     {
-        icon: faShoppingCart,
+        icon: "shopping-cart",
         name: "Record",
         subMenu: [
             {
@@ -18,7 +17,7 @@ const menu = [
             },
         ],
     }, {
-        icon: faGifts,
+        icon: "gifts",
         name: "Sku",
         link: "/sku",
     },
@@ -30,7 +29,7 @@ function MenuItem({ history, currentPath, icon, name, link }) {
     return (
         <div className="d-flex flex-row py-2 cursor-pointer" onClick={() => history.push(link)}>
             <div className={`mx-4 ${isViewingClass}`}>
-                <FontAwesomeIcon icon={icon}/>
+                <MDBIcon icon={icon}/>
             </div>
             <div className={`flex-grow-1 ${isViewingClass}`}>
                 {name}
@@ -45,16 +44,16 @@ function MenuItemWithSubMenu({ history, currentPath, icon, name, subMenu }) {
     return (<>
         <div onClick={() => setExpand(!expand)} className="d-flex flex-row py-2 cursor-pointer">
             <div className={`mx-4 ${expand ? "blue-text" : ""}`}>
-                <FontAwesomeIcon icon={icon} />
+                <MDBIcon icon={icon}/>
             </div>
             <div className={ `flex-grow-1 ${expand ? "blue-text" : ""}` }>
                 <span> {name} </span>
             </div>
             <div className="mx-4">
                 { expand ?
-                        <FontAwesomeIcon icon={faChevronUp} />
+                        <MDBIcon icon="chevron-up" />
                         :
-                        <FontAwesomeIcon icon={faChevronDown} />
+                        <MDBIcon icon="chevron-down" />
                 }
             </div>
         </div>
