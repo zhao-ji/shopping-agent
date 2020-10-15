@@ -3,50 +3,43 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect,
-    useHistory,
-    useLocation,
 } from "react-router-dom";
+
+import { LoginPage } from './login';
 
 import { Sidebar } from './sidebar';
 import { Header } from './header';
-import { Records } from './record';
-import { LoginPage } from './login';
 
-const Auth = {
-    isAuthenticated: false,
-    login(callback) {
-        Auth.isAuthenticated = true;
-        setTimeout(callback, 100);
-    },
-    logout(callback) {
-        Auth.isAuthenticated = false;
-        setTimeout(callback, 100);
-    }
-};
+import { Records } from './records';
+import { CreateRecord } from './createRecord';
+import { Skus } from './skus';
 
 export default function App() {
-    const renderMain = ({ location }) => {
-        if (Auth.isAuthenticated) {
-            return (
-                <div id="App">
-                    <Sidebar />
-                    <Header />
-                    <div id="body">
-                        <Records />
-                    </div>
-                </div>
-            );
-        }
-        return <Redirect to={{ pathname: "/login", state: { from: location } }} />;
-    }
     return (
         <Router>
             <Switch>
                 <Route path="/login">
                     <LoginPage />
                 </Route>
-                <Route path="/" render={renderMain} />
+                <Route path="/">
+                    <div id="App">
+                        <Sidebar />
+                        <Header />
+                        <div id="body">
+                            <Switch>
+                                <Route exact path="/">
+                                    <Records />
+                                </Route>
+                                <Route path="/record/create">
+                                    <CreateRecord />
+                                </Route>
+                                <Route exact path="/sku">
+                                    <Skus />
+                                </Route>
+                            </Switch>
+                        </div>
+                    </div>
+                </Route>
             </Switch>
         </Router>
     );

@@ -1,12 +1,10 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from "../utils";
 
 export function useFetchRecords(search, page) {
-    console.log('-------------');
     const [records, setRecords] = useState([]);
     useEffect(() => {
-        axios.get("/record/")
+        api.get("/record/")
             .then(response => {
                 setRecords(response.data.results);
             })

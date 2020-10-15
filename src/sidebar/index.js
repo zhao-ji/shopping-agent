@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { faShoppingCart, faGifts, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -24,27 +25,29 @@ const menu = [
 ];
 
 
-function MenuItem({ icon, name, link }) {
+function MenuItem({ history, currentPath, icon, name, link }) {
+    const isViewingClass = currentPath === link ? "blue-text" : "";
     return (
-        <div className="d-flex flex-row py-2">
-            <div className="mx-4">
+        <div className="d-flex flex-row py-2 cursor-pointer" onClick={() => history.push(link)}>
+            <div className={`mx-4 ${isViewingClass}`}>
                 <FontAwesomeIcon icon={icon}/>
             </div>
-            <div className="flex-grow-1">
+            <div className={`flex-grow-1 ${isViewingClass}`}>
                 {name}
             </div>
         </div>
     );
 }
 
-function MenuItemWithSubMenu({ icon, name, subMenu }) {
-    const [expand, setExpand] = useState(false);
+function MenuItemWithSubMenu({ history, currentPath, icon, name, subMenu }) {
+    const isInThisMenu = subMenu.map(item => item.link).includes(currentPath);
+    const [expand, setExpand] = useState(isInThisMenu);
     return (<>
         <div onClick={() => setExpand(!expand)} className="d-flex flex-row py-2 cursor-pointer">
-            <div className={ expand ? "mx-4 blue-text" : "mx-4" }>
+            <div className={`mx-4 ${expand ? "blue-text" : ""}`}>
                 <FontAwesomeIcon icon={icon} />
             </div>
-            <div className={ expand ? "flex-grow-1 blue-text" : "flex-grow-1" }>
+            <div className={ `flex-grow-1 ${expand ? "blue-text" : ""}` }>
                 <span> {name} </span>
             </div>
             <div className="mx-4">
@@ -57,7 +60,10 @@ function MenuItemWithSubMenu({ icon, name, subMenu }) {
         </div>
         <div style={{ backgroundColor: "rgba(95,93,93,0.15)" }}>
             {expand && subMenu.map(menu => (
-                <div className="py-2 ml-5 pl-3 cursor-pointer">
+                <div
+                    className={`py-2 ml-5 pl-3 cursor-pointer ${isInThisMenu && menu.link === currentPath && "blue-text"}`}
+                    onClick={() => history.push(menu.link)}
+                >
                     {menu.name}
                 </div>
             ))}
@@ -66,10 +72,18 @@ function MenuItemWithSubMenu({ icon, name, subMenu }) {
 }
 
 export function Sidebar() {
+    const location = useLocation();
+    const currentPath = location.pathname;
+    const history = useHistory();
+    const routeConfig = {
+        currentPath,
+        history,
+    };
+
     const menuList = menu.map(item => {
         if (item.subMenu && item.subMenu.length > 0)
-            return <MenuItemWithSubMenu {...item} />;
-        return <MenuItem {...item} />;
+            return <MenuItemWithSubMenu {...routeConfig} {...item} />;
+        return <MenuItem {...routeConfig} {...item} />;
     });
     // text-uppercase font-weight-bold h2 text-monospace text-center pt-4
     return (

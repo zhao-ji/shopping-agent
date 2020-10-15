@@ -13,7 +13,7 @@ export function Records() {
                 <input />
             </div>
             <div>
-                {records}
+                {records.map(record => (<span>{record.id}</span>))}
             </div>
         </div>
     );

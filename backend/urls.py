@@ -19,7 +19,7 @@ from django.urls import include, path
 from rest_framework import routers
 
 from app import views
-from backend.views import LoginView, LogoutView
+from backend.views import LoginView, LogoutView, UserView
 
 router = routers.DefaultRouter()
 router.register(r"record", views.RecordViewSet)
@@ -31,4 +31,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^login/$', LoginView.as_view(), name='user-login'),
     url(r'^logout/$', LogoutView.as_view(), name='user-logout'),
+    url(r'^user/$', UserView.as_view(), name='user-info'),
 ]
