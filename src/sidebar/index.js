@@ -11,7 +11,7 @@ const menu = [
             {
                 name: "All records",
                 link: "/",
-            },{
+            }, {
                 name: "Add new record",
                 link: "/record/create",
             },
@@ -19,7 +19,51 @@ const menu = [
     }, {
         icon: "gifts",
         name: "Sku",
-        link: "/sku",
+        subMenu: [
+            {
+                name: "All skus",
+                link: "/sku",
+            }, {
+                name: "Add new sku",
+                link: "/sku/create",
+            },
+        ],
+    }, {
+        icon: "users",
+        name: "Client",
+        subMenu: [
+            {
+                name: "All clients",
+                link: "/client",
+            }, {
+                name: "Add new client",
+                link: "/client/create",
+            },
+        ],
+    }, {
+        icon: "store",
+        name: "Shop",
+        subMenu: [
+            {
+                name: "All shops",
+                link: "/shop",
+            }, {
+                name: "Add new shop",
+                link: "/shop/create",
+            },
+        ],
+    }, {
+        icon: "fighter-jet",
+        name: "Post",
+        subMenu: [
+            {
+                name: "All post companies",
+                link: "/post",
+            }, {
+                name: "Add new post company",
+                link: "/post/create",
+            },
+        ],
     },
 ];
 
