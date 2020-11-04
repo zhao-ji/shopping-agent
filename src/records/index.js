@@ -16,18 +16,30 @@ export function Records() {
         rows: records,
     }
     return (
-        <div className="z-index-1 pt-4 px-3">
-            <MDBRow>
+        <div className="z-index-1 py-4 px-3">
+            <div className="d-flex justify-content-between  pb-3">
+                <span>
+                    All records
+                </span>
+                <span>
+                    Total 5 records
+                </span>
+            </div>
+            <MDBRow className="pb-3">
                 <MDBCol md="6">
-                    <MDBInput type="text" hint="search" />
+                    <MDBInput type="text" hint="search" icon="search" />
                 </MDBCol>
-                <MDBCol md="2" className="offset-md-2">
-                    <input type="checkbox" class="custom-control-input" id="post" />
-                    <label class="custom-control-label" for="post">Post</label>
+                <MDBCol md="1" className="md-form offset-md-4">
+                    <div className="custom-control custom-checkbox">
+                        <input type="checkbox" className="custom-control-input pull-right" id="post" />
+                        <label className="custom-control-label cursor-pointer" for="post">Show post</label>
+                    </div>
                 </MDBCol>
-                <MDBCol md="2">
-                    <input type="checkbox" class="custom-control-input" id="shop" />
-                    <label class="custom-control-label" for="shop">Shop</label>
+                <MDBCol md="1" className="md-form">
+                    <div className="custom-control custom-checkbox ml-3 pull-right">
+                        <input type="checkbox" className="custom-control-input" id="shop" />
+                        <label className="custom-control-label cursor-pointer" for="shop">Show shop</label>
+                    </div>
                 </MDBCol>
             </MDBRow>
             <br/>
@@ -37,6 +49,7 @@ export function Records() {
                 searching={false}
                 sorting={false}
                 paging={false}
+                className="px-3"
             />
         </div>
     );

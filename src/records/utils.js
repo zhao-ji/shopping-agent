@@ -43,19 +43,19 @@ export const columns = [
     },
     {
         label: 'Shop',
-        field: 'sku',
+        field: 'shop',
         sort: 'asc',
         width: 50
     },
     {
         label: 'Post company',
-        field: 'sku',
+        field: 'post',
         sort: 'asc',
         width: 50
     },
     {
         label: 'Status',
-        field: 'sku',
+        field: 'status',
         sort: 'asc',
         width: 50
     },

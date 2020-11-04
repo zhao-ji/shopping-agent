@@ -66,3 +66,7 @@ code {
 tbody + thead {
     display: none;
 }
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
