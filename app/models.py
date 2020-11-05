@@ -32,7 +32,7 @@ class Record(models.Model):
     total_price = models.DecimalField(**DECIMAL_LIMITATION, **NULLABLE)
     note = models.CharField(max_length=1024, **NULLABLE)
 
-    # clients
+    # client
     buyer = models.CharField(max_length=1024)
     buyer_contact = models.CharField(max_length=128, **NULLABLE)
 
@@ -40,6 +40,14 @@ class Record(models.Model):
     sku = models.CharField(max_length=1024)
     sku_price = models.DecimalField(**DECIMAL_LIMITATION, **NULLABLE)
     sku_icon = models.CharField(max_length=1024, **NULLABLE)
+
+    # store
+    store = models.CharField(max_length=1024, **NULLABLE)
+    store_icon = models.CharField(max_length=1024, **NULLABLE)
+
+    # post company
+    post_company = models.CharField(max_length=1024, **NULLABLE)
+    post_track_number = models.CharField(max_length=1024, **NULLABLE)
 
 
 class Buyer(models.Model):
@@ -69,3 +77,30 @@ class Sku(models.Model):
     name = models.CharField(max_length=1024)
     price = models.DecimalField(**DECIMAL_LIMITATION, **NULLABLE)
     icon = models.CharField(max_length=1024, **NULLABLE)
+
+
+class Store(models.Model):
+    class Meta:
+        ordering = ["-updated_at", "-created_at"]
+
+    def __str__(self):
+        return self.name
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    name = models.CharField(max_length=1024)
+    icon = models.CharField(max_length=1024, **NULLABLE)
+
+
+class Post(models.Model):
+    class Meta:
+        ordering = ["-updated_at", "-created_at"]
+
+    def __str__(self):
+        return self.name
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    name = models.CharField(max_length=1024)
